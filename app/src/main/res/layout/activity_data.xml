@@ -4,15 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="8dp"
     tools:context=".DataActivity">
 
     <TextView
         android:id="@+id/name_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:textSize="18sp" />
+        android:padding="@dimen/padding"
+        android:textSize="@dimen/text_size" />
 
     <ListView
         android:id="@+id/list"

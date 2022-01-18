@@ -1,5 +1,6 @@
 package eu.nexume.android_db;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -29,12 +30,12 @@ public class MainActivity extends AppCompatActivity {
         database = dbHelper.getWritableDatabase();
 
         editText = findViewById(R.id.edit_text);
-
         insertButton = findViewById(R.id.insert_button);
+
         insertButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nameSaveStr = editText.getText().toString().trim();
+              nameSaveStr = editText.getText().toString().trim();
                 if(editText.length() != 0) {
 
                     // добавяне на запис
@@ -45,15 +46,15 @@ public class MainActivity extends AppCompatActivity {
 
                     database.execSQL(insertQuery);
 
-//                ContentValues values = new ContentValues();
-//                values.put(MyDataBaseHelper.COLUMN_USER_NAME, nameSaveStr);
-//                database.insert(MyDataBaseHelper.TABLE_NAME, null, values);
+//                    ContentValues values = new ContentValues();
+//                    values.put(MyDataBaseHelper.COLUMN_USER_NAME, nameSaveStr);
+//                    database.insert(MyDataBaseHelper.TABLE_NAME, null, values);
 
                     Intent intent = new Intent(MainActivity.this, DataActivity.class);
                     startActivity(intent);
 
                 } else {
-                    Toast.makeText(MainActivity.this, "Моля, напишете Вашето име!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, getString(R.string.please_write_your_name), Toast.LENGTH_SHORT).show();
                 }
             }
         });

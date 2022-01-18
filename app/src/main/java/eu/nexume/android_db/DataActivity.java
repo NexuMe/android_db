@@ -3,11 +3,12 @@ package eu.nexume.android_db;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
@@ -46,9 +47,9 @@ public class DataActivity extends AppCompatActivity {
         while (cursor.moveToNext()) {
 
             // получаване на индексите и стойностите на колоните
-            int id = cursor.getInt(cursor.getColumnIndex(MyDataBaseHelper.UID));
+            int id = cursor.getInt(cursor.getColumnIndexOrThrow(MyDataBaseHelper.UID));
 
-            nameGetStr = cursor.getString(cursor.getColumnIndex(MyDataBaseHelper.COLUMN_USER_NAME));
+            nameGetStr = cursor.getString(cursor.getColumnIndexOrThrow(MyDataBaseHelper.COLUMN_USER_NAME));
         }
 
         textView.setText(nameGetStr);
@@ -62,7 +63,7 @@ public class DataActivity extends AppCompatActivity {
             Toast.makeText(DataActivity.this, "Базата от данни е празна!", Toast.LENGTH_SHORT).show();
         } else {
             while (dataCursor.moveToNext()) {
-                dataList.add(dataCursor.getString(cursor.getColumnIndex(MyDataBaseHelper.COLUMN_USER_NAME)));
+                dataList.add(dataCursor.getString(dataCursor.getColumnIndexOrThrow(MyDataBaseHelper.COLUMN_USER_NAME)));
             }
             ArrayAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dataList);
             listView.setAdapter(listAdapter);
