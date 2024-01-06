@@ -65,7 +65,7 @@ public class DataActivity extends AppCompatActivity {
             while (dataCursor.moveToNext()) {
                 dataList.add(dataCursor.getString(dataCursor.getColumnIndexOrThrow(MyDataBaseHelper.COLUMN_USER_NAME)));
             }
-            ArrayAdapter listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dataList);
+            ArrayAdapter<String> listAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, dataList);
             listView.setAdapter(listAdapter);
         }
         dataCursor.close();

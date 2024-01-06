@@ -33,11 +33,10 @@ public class MyDataBaseHelper extends SQLiteOpenHelper {
         String SQL_CREATE_ITEMS_TABLE = "CREATE TABLE "
                 + TABLE_NAME + " ("
                 + UID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + COLUMN_USER_NAME + " TEXT NOT NULL);";
+                + COLUMN_USER_NAME + " TEXT NOT NULL)";
 
         // изпълнение на SQL оператора
         database.execSQL(SQL_CREATE_ITEMS_TABLE);
-
     }
 
     //обновяване на базата данни
@@ -50,5 +49,6 @@ public class MyDataBaseHelper extends SQLiteOpenHelper {
         onCreate(db);
 
     }
+
 
 }

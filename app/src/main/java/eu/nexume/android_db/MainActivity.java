@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,24 +38,25 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
               nameSaveStr = editText.getText().toString().trim();
-                if(editText.length() != 0) {
+                if(!TextUtils.isEmpty(nameSaveStr)) {
 
                     // добавяне на запис
-                    String insertQuery = "INSERT INTO " +
+                  /*  String insertQuery = "INSERT INTO " +
                             MyDataBaseHelper.TABLE_NAME + " ("
                             + MyDataBaseHelper.COLUMN_USER_NAME + ") VALUES ('"
                             + nameSaveStr + "')";
 
-                    database.execSQL(insertQuery);
+                    database.execSQL(insertQuery);*/
 
-//                    ContentValues values = new ContentValues();
-//                    values.put(MyDataBaseHelper.COLUMN_USER_NAME, nameSaveStr);
-//                    database.insert(MyDataBaseHelper.TABLE_NAME, null, values);
+                    ContentValues values = new ContentValues();
+                    values.put(MyDataBaseHelper.COLUMN_USER_NAME, nameSaveStr);
+                    database.insert(MyDataBaseHelper.TABLE_NAME, null, values);
 
                     Intent intent = new Intent(MainActivity.this, DataActivity.class);
                     startActivity(intent);
 
                 } else {
+                    editText.setError(getString(R.string.please_write_your_name));
                     Toast.makeText(MainActivity.this, getString(R.string.please_write_your_name), Toast.LENGTH_SHORT).show();
                 }
             }
