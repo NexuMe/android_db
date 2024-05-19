@@ -7,10 +7,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class MyDataBaseHelper extends SQLiteOpenHelper {
 
     //константи за конструктора на класа
-//дава името на файла с база данни
+    //дава името на файла с база от данни
     private static final String DATABASE_NAME = "my_database.db";
 
-    //отговаря на номера на базата данни
+    // версията на базата от данни
     private static final int DATABASE_VERSION = 1;
 
     // конструктор на класа
